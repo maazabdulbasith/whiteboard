@@ -1,0 +1,84 @@
+/* Animated gradient background */
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(-45deg, #e3ffe8, #f9f6ff, #e0e7ff, #fffbe7);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Fade-in for main app */
+.App {
+  animation: fadeIn 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Animated button hover */
+button, .clear-btn {
+  transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.08);
+}
+button:hover, .clear-btn:hover {
+  background: linear-gradient(90deg, #1976d2 60%, #43a047 100%);
+  color: #fff;
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 4px 16px rgba(25, 118, 210, 0.18);
+}
+
+/* Animated input focus */
+input[type="text"], input[type="color"], input[type="range"] {
+  transition: box-shadow 0.3s, border 0.3s;
+}
+input[type="text"]:focus, input[type="color"]:focus, input[type="range"]:focus {
+  box-shadow: 0 0 0 2px #1976d233;
+  border: 1px solid #1976d2;
+  outline: none;
+}
+
+/* Animated cursor pulse */
+.user-cursor {
+  animation: cursorPulse 1.2s infinite alternate;
+}
+@keyframes cursorPulse {
+  from { box-shadow: 0 0 0 0 rgba(25, 118, 210, 0.15); }
+  to { box-shadow: 0 0 0 8px rgba(25, 118, 210, 0.04); }
+}
+
+/* Toolbar slide-in */
+.toolbar {
+  animation: toolbarSlide 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+@keyframes toolbarSlide {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Canvas fade-in */
+canvas {
+  animation: canvasFade 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+@keyframes canvasFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Subtle floating animation for join-container */
+.join-container {
+  animation: floatIn 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+@keyframes floatIn {
+  from { opacity: 0; transform: translateY(40px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+} 

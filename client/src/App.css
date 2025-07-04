@@ -1,0 +1,231 @@
+/* App container and layout */
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+/* Join Room UI */
+.join-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: rgba(255,255,255,0.85);
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(25, 118, 210, 0.08);
+  margin: 0 auto;
+  max-width: 420px;
+  padding: 2.5em 2em 2em 2em;
+}
+
+.join-container h1 {
+  font-size: 2.2em;
+  font-weight: 700;
+  color: #1976d2;
+  margin-bottom: 1.2em;
+  letter-spacing: 1px;
+}
+
+.join-container input {
+  padding: 0.7em 1em;
+  font-size: 1.1em;
+  margin-right: 0.5em;
+  border-radius: 6px;
+  border: 1px solid #bdbdbd;
+  background: #f7fafd;
+  margin-bottom: 1em;
+  width: 220px;
+}
+
+.join-container button {
+  padding: 0.7em 1.5em;
+  font-size: 1.1em;
+  border-radius: 6px;
+  border: none;
+  background: #1976d2;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.08);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.join-container button:hover {
+  background: #1565c0;
+  box-shadow: 0 4px 16px rgba(25, 118, 210, 0.18);
+}
+
+/* Whiteboard main container */
+.whiteboard-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background: rgba(255,255,255,0.95);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2em 2.5em 0.7em 2.5em;
+  background: rgba(244,246,250,0.98);
+  border-bottom: 1px solid #e0e0e0;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.04);
+  z-index: 10;
+}
+
+.header h2 {
+  font-size: 1.3em;
+  color: #1976d2;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 1.2em;
+}
+
+.user-count {
+  font-weight: bold;
+  color: #1976d2;
+  font-size: 1.1em;
+}
+
+.connection-status {
+  font-size: 1.2em;
+  color: #43a047;
+  font-weight: 600;
+}
+
+/* Toolbar styles */
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 2em;
+  padding: 0.9em 2.5em;
+  background: #f9fafb;
+  border-bottom: 1px solid #e0e0e0;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.04);
+  z-index: 9;
+}
+
+.toolbar label {
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+  font-size: 1.1em;
+  color: #333;
+}
+
+.toolbar input[type="color"] {
+  border: none;
+  width: 2.2em;
+  height: 2.2em;
+  background: none;
+  cursor: pointer;
+  border-radius: 50%;
+  box-shadow: 0 1px 4px rgba(25, 118, 210, 0.08);
+}
+
+.toolbar input[type="range"] {
+  width: 110px;
+}
+
+.clear-btn {
+  background: #e53935;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(229, 57, 53, 0.08);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.clear-btn:hover {
+  background: #b71c1c;
+  box-shadow: 0 4px 16px rgba(229, 57, 53, 0.18);
+}
+
+/* Canvas and cursors */
+canvas {
+  display: block;
+  position: absolute;
+  top: 120px; /* header + toolbar height */
+  left: 0;
+  width: 100vw;
+  height: calc(100vh - 120px);
+  background: #fff;
+  z-index: 1;
+  touch-action: none;
+  border-radius: 0 0 18px 18px;
+  box-shadow: 0 8px 32px rgba(25, 118, 210, 0.04);
+}
+
+.cursors-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.user-cursor {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 0 4px rgba(0,0,0,0.15);
+  pointer-events: none;
+  opacity: 0.85;
+  transform: translate(-50%, -50%);
+}
+
+/* Responsive design */
+@media (max-width: 700px) {
+  .header, .toolbar {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+  .whiteboard-container {
+    border-radius: 0;
+  }
+  canvas {
+    border-radius: 0;
+  }
+}
+
+.leave-room-btn {
+  background: #fff;
+  color: #1976d2;
+  border: 2px solid #1976d2;
+  border-radius: 6px;
+  padding: 0.5em 1.1em;
+  font-size: 1em;
+  cursor: pointer;
+  font-weight: 600;
+  margin-left: 1em;
+  transition: background 0.2s, color 0.2s, border 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.04);
+}
+.leave-room-btn:hover {
+  background: #1976d2;
+  color: #fff;
+  border: 2px solid #1976d2;
+  box-shadow: 0 4px 16px rgba(25, 118, 210, 0.18);
+} 
